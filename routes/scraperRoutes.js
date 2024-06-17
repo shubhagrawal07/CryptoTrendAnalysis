@@ -1,8 +1,8 @@
 const express = require("express");
-const websiteScraper = require("../controllers/websiteScraper");
 
 const router = express.Router();
 
-router.get("/website", websiteScraper);
+// router.get("/website", websiteScraper);
+// router.get("/twitter", twitterScraper);
 
 module.exports = router;

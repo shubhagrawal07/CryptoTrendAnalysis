@@ -21,4 +21,14 @@ const configs = [
   // Add more configurations for other websites
 ];
 
-module.exports = configs;
+const accounts = [
+  "TheCryptoLark",
+  "CryptoGodJohn",
+  "BlessedManish",
+  "coinmastermind_",
+  "AlexMaestro2022",
+  "johnnycrypto_2",
+  "PBITCOINEER",
+];
+
+module.exports = { configs, accounts };
