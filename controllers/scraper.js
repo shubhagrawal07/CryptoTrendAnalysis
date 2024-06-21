@@ -1,6 +1,6 @@
 const scrapeWebsite = require("../helper/webScrapper");
 const fetchTweetsWithScreenName = require("../helper/tweetScrapper");
-const { accounts } = require("../helper/configsScrapping");
+const cryptoFinder = require("../helper/cryptoFinder");
 
 // Main function to scrape all websites
 const websiteScraper = async (configs) => {
