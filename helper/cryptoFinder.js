@@ -4,7 +4,7 @@ const filePath =
   "C:\\Users\\shuagrawal\\OneDrive - Conga\\Desktop\\Node\\PROJECTN037_XAVIER\\data\\words.txt";
 const englishWords = fs.readFileSync(filePath, "utf8").split("\n");
 
-console.log(englishWords);
+// console.log(englishWords);
 
 function isInDictionary(word) {
   for (const keys of englishWords) {
@@ -19,7 +19,7 @@ function isCryptoAbbr(word) {
 
 function checkForCryptos(para, possibleCryptos) {
   const words = para.split(/[^a-zA-Z]+/);
-  // const possibleCryptos = {};
+  //   const possibleCryptos = {};
 
   for (let i = 0; i < words.length - 1; i++) {
     const word1 = words[i];
@@ -28,8 +28,8 @@ function checkForCryptos(para, possibleCryptos) {
       !isInDictionary(word1.toLowerCase()) &&
       !isInDictionary(word2.toLowerCase()) &&
       word1 !== word2 &&
-      word1.length > 0 &&
-      word2.length > 0
+      word1.length >= 3 &&
+      word2.length >= 3
     ) {
       if (isCryptoAbbr(word1)) {
         if (!possibleCryptos[word2.toLowerCase()]) {
@@ -44,7 +44,7 @@ function checkForCryptos(para, possibleCryptos) {
     }
   }
 
-  return possibleCryptos;
+  //   return possibleCryptos;
 }
 
 // function main() {

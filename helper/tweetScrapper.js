@@ -25,7 +25,7 @@ async function fetchTweetsWithScreenName(screenName) {
     const userId = user.data.id;
 
     const tweets = await client.v2.userTimeline(userId, {
-      max_results: 10,
+      max_results: 5,
       "tweet.fields": ["created_at", "text", "id", "entities"],
       expansions: ["author_id"],
     });

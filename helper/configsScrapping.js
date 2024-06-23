@@ -22,13 +22,13 @@ const configs = [
 ];
 
 const accounts = [
+  "CryptoStSign",
   "TheCryptoLark",
   "CryptoGodJohn",
   "BlessedManish",
   "coinmastermind_",
   "AlexMaestro2022",
   "johnnycrypto_2",
-  "PBITCOINEER",
 ];
 
 module.exports = { configs, accounts };
