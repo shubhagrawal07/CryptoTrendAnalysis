@@ -1,10 +1,14 @@
 const fs = require("fs");
 
-const filePath =
-  "C:\\Users\\shuagrawal\\OneDrive - Conga\\Desktop\\Node\\PROJECTN037_XAVIER\\data\\words.txt";
-const englishWords = fs.readFileSync(filePath, "utf8").split("\n");
+// const filePath =
+//   "C:\\Users\\shuagrawal\\OneDrive - Conga\\Desktop\\Node\\PROJECTN037_XAVIER\\data\\words.txt";
+// const englishWords = fs.readFileSync(filePath, "utf8").split("\n");
 
-// console.log(englishWords);
+const rawData = fs.readFileSync("data\\data.json");
+const data = JSON.parse(rawData);
+
+const englishWords = data.englishWords;
+console.log(englishWords);
 
 function isInDictionary(word) {
   for (const keys of englishWords) {
