@@ -35,7 +35,8 @@ function checkForCryptos(para, possibleCryptos) {
       !isInDictionary(word2.toLowerCase()) &&
       word1 !== word2 &&
       word1.length >= 3 &&
-      word2.length >= 3
+      word2.length >= 3 &&
+      word1[0]==word2[0]
     ) {
       if (isCryptoAbbr(word1)) {
         if (!possibleCryptos[word2.toLowerCase()]) {
