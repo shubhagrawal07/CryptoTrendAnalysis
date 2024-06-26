@@ -1,22 +1,17 @@
-// const fs = require("fs");
-
-// // const filePath =
-// //   "C:\\Users\\shuagrawal\\OneDrive - Conga\\Desktop\\Node\\PROJECTN037_XAVIER\\data\\words.txt";
-// // const englishWords = fs.readFileSync(filePath, "utf8").split("\n");
-
-// const rawData = fs.readFileSync("data\\data.json");
-// const data = JSON.parse(rawData);
-
-// const englishWords = data.englishWords;
-
 const englishWords = require("../data/englishWords");
-console.log(englishWords);
+const knownTop100Cryptos = require("../data/knownCryptos");
 
 function isInDictionary(word) {
   for (const keys of englishWords) {
     if (keys == word) return true;
   }
   return false;
+}
+
+function isAknown100Crypto(word) {
+  return knownTop100Cryptos.some(
+    crypto => crypto.name.toLowerCase() === word.toLowerCase() || crypto.symbol.toLowerCase() === word.toLowerCase()
+  );
 }
 
 function isCryptoAbbr(word) {
@@ -36,7 +31,9 @@ function checkForCryptos(para, possibleCryptos) {
       word1 !== word2 &&
       word1.length >= 3 &&
       word2.length >= 3 &&
-      word1[0]==word2[0]
+      word1[0]==word2[0] &&
+      !isAknown100Crypto(word1)&&
+      !isAknown100Crypto(word2)
     ) {
       if (isCryptoAbbr(word1)) {
         if (!possibleCryptos[word2.toLowerCase()]) {
@@ -51,23 +48,7 @@ function checkForCryptos(para, possibleCryptos) {
     }
   }
 
-  //   return possibleCryptos;
 }
 
-// function main() {
-//   const text1 = "This text does not contain any cryptos in it.";
-//   const text2 =
-//     "The price of bitcoin (BTC) fell sharply from a two-month high just shy of $72,000 in the minutes following the numbers. At press time, BTC was changing hands at $70,900, down 0.5% over the past 24 hours.";
-//   const results = {};
-//   checkForCryptos(text2, results);
-//   Object.entries(results).forEach(([key, value]) => {
-//     const name = key;
-//     const abbr = value;
-
-//     console.log(name, value);
-//   });
-// }
-
-// main();
 
 module.exports = checkForCryptos;
