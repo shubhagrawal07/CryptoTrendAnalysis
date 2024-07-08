@@ -1,6 +1,7 @@
 const scrapeWebsite = require("../helper/webScrapper");
 const fetchTweetsWithScreenName = require("../helper/tweetScrapper");
 const cryptoFinder = require("../helper/cryptoFinder");
+const {savingTweets,savingArticles} = require("../helper/savingDataInDB");
 
 // Main function to scrape all websites
 const websiteScraper = async (configs) => {
@@ -66,6 +67,9 @@ const scraper = async (accounts, configs) => {
     console.log(JSON.stringify(obj.possibleCryptos));
     return JSON.stringify(obj.possibleCryptos) !== "{}";
   });
+
+  await savingTweets(tweetsWithCryptos);
+  await savingArticles(articlesWithCryptos);
 
   return { tweetsWithCryptos, articlesWithCryptos };
 };
