@@ -7,18 +7,27 @@ async function processTweet(tweet){
     const { accountName, url, postText, possibleCryptos } = tweet;
     const cryptoIds = [];
 
+    let tweetExist = await Tweet.findOne({ url });
+
+    if(tweetExist){
+      console.log("Tweet Exists!!!");
+      return;
+    }
+
     const cryptoPromises = Object.entries(possibleCryptos).map(async ([name, abbreviation]) => {
         let crypto = await Crypto.findOne({ name });
-        console.log(name);
+        console.log(crypto);
     
         if (!crypto) {
           crypto = new Crypto({ name, abbreviation });
           await crypto.save();
+          console.log("new Crypto Saved");
         }
     
         cryptoIds.push(crypto._id);
-        crypto.articleCount += 1;
+        crypto.tweetCount += 1;
         await crypto.save();
+        console.log("Updated Crypto saved")
       });
 
     await Promise.all(cryptoPromises);
@@ -35,17 +44,25 @@ async function processTweet(tweet){
 }
 
 async function savingTweets(tweets){
-    const tweetPromises = tweets.map(tweet=> processTweet(tweet));
-    await Promise.all(tweetPromises);
+    for(const tweet of tweets){
+      await processTweet(tweet);
+    }
 }
 
 async function processArticle(article) {
     const { source, title, url, summary, possibleCryptos } = article;
     const cryptoIds = [];
+
+    let articleExist = await Article.findOne({ url });
+
+    if(articleExist){
+      console.log("Article Exists!!!");
+      return;
+    }
   
     const cryptoPromises = Object.entries(possibleCryptos).map(async ([name, abbreviation]) => {
       let crypto = await Crypto.findOne({ name });
-      console.log(name);
+      console.log(crypto);
   
       if (!crypto) {
         crypto = new Crypto({ name, abbreviation });
@@ -72,8 +89,12 @@ async function processArticle(article) {
   }
 
 async function savingArticles(articles) {
-    const articlePromises = articles.map(article => processArticle(article));
-    await Promise.all(articlePromises);
+    // const articlePromises = articles.map(article => processArticle(article));
+    // await Promise.all(articlePromises);
+
+    for(const article of articles){
+      await processArticle(article);
+    }
 }
 
 module.exports = {savingTweets,savingArticles};

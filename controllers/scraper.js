@@ -68,6 +68,7 @@ const scraper = async (accounts, configs) => {
     return JSON.stringify(obj.possibleCryptos) !== "{}";
   });
 
+    console.log("Saving data to the database....");
   await savingTweets(tweetsWithCryptos);
   await savingArticles(articlesWithCryptos);
 
