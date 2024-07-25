@@ -16,7 +16,7 @@ async function fetchArticleDetails(url) {
     });
     return paragraphs;
   } catch (error) {
-    console.error(`Error scraping ${url}:`, error);
+    console.error(`Error scraping ${url}: ${error.code}` );
     return [];
   }
 }
@@ -51,7 +51,7 @@ async function scrapeWebsite(config) {
 
     return articles;
   } catch (error) {
-    console.error(`Error scraping ${config.source}:`, error);
+    console.error(`Error scraping ${config.source}: ${error.code}`);
     return [];
   }
 }

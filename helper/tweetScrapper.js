@@ -48,7 +48,7 @@ async function fetchTweetsWithScreenName(screenName) {
       );
       return [];
     } else {
-      console.error(`Error fetching tweets for ${screenName}:`, error);
+      console.error(`Error fetching tweets for ${screenName}:`, error.code);
       return [];
     }
   }
