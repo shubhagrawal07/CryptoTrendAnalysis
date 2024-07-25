@@ -24,6 +24,7 @@ async function fetchArticleDetails(url) {
 // Common scraping function
 async function scrapeWebsite(config) {
   try {
+    console.log(`Fetching articles from ${config.source}`);
     const { data } = await axios.get(config.url);
     const $ = cheerio.load(data);
 

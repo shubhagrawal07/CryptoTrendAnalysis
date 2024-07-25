@@ -21,6 +21,7 @@ const client = new TwitterApi(process.env.X_BEARER_TOKEN);
 
 async function fetchTweetsWithScreenName(screenName) {
   try {
+    console.log(`fetching tweets from ${screenName}`);
     const user = await client.v2.userByUsername(screenName);
     const userId = user.data.id;
 

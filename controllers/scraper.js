@@ -34,9 +34,11 @@ const twitterScraper = async (accounts) => {
 const scraper = async (accounts, configs) => {
   console.log("Fetching all tweets.....");
   const allTweets = await twitterScraper(accounts);
+  console.log(`${allTweets.length} tweets fetched`)
 
   console.log("Fetching all articles....");
   const allArticles = await websiteScraper(configs);
+  console.log(`${allArticles.length} articles fetched`);
 
   const searchForCryptoInTweets = allTweets.map((tweet) => {
     const text = tweet.postText;
