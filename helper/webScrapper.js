@@ -34,7 +34,7 @@ async function scrapeWebsite(config) {
     await Promise.all(
       leafs.map(async (element, index) => {
         const title = $(element).find(config.titleSelector).text().trim();
-        const url = $(element).find(config.urlSelector).attr("href");
+        const url = $(element).find(config.urlSelector).attr("href")||$(element).find(config.urlSelector).attr("data-href")||$(element).attr('href');
         const summary = $(element).find(config.summarySelector).text().trim();
         const articleUrl = config.baseUrl ? `${config.baseUrl}${url}` : url;
 

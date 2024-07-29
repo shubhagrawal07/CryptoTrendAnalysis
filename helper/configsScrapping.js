@@ -98,6 +98,106 @@ const configs = [
   baseUrl: "",
   header: {}
 },
+{
+  source: "Liquid Blog",
+  url: "https://www.blog.liquid.com",
+  articleSelector: "article",
+  titleSelector: "h1",
+  urlSelector: "a",
+  summarySelector: "h1",
+  baseUrl: "https://www.blog.liquid.com",
+  header: {}
+},
+{
+  source: "Litecoin Foundation Blog",
+  url: "https://www.litecoin.net/news",
+  articleSelector: ".collection-item-2",
+  titleSelector: "h2",
+  urlSelector: "a",
+  summarySelector: ".paragraph-2",
+  baseUrl: "https://www.litecoin.net",
+  header: {}
+},
+{
+  source: "LocalBitcoins Blog",
+  url: "https://localbitcoins.com/blog/",
+  articleSelector: ".blogpost-contents",
+  titleSelector: "h2",
+  urlSelector: "a",
+  summarySelector: "p",
+  baseUrl: "https://localbitcoins.com",
+  header: {}
+},
+{
+  source: "Luno Blog",
+  url: "https://discover.luno.com/category/news/",
+  articleSelector: "article",
+  titleSelector: "h2",
+  urlSelector: "a",
+  summarySelector: "p",
+  baseUrl: "",
+  header: {}
+},
+{
+  source: "Monero Blog",
+  url: "https://getmonero.org/blog",
+  articleSelector: ".post-lead",
+  titleSelector: "h3",
+  urlSelector: "a",
+  summarySelector: "p",
+  baseUrl: "https://getmonero.org",
+  header: {}
+},
+{
+  source: "Naxo Blog",
+  url: "https://nexo.io/blog",
+  articleSelector: ".border-t-1",
+  titleSelector: "h3",
+  urlSelector: "a",
+  summarySelector: "h3",
+  baseUrl: "",
+  header: {}
+},
+{
+  source: "Pundi X Blog",
+  url: "https://blog.pundix.com/",
+  articleSelector: "article",
+  titleSelector: "h2",
+  urlSelector: "a",
+  summarySelector: "p",
+  baseUrl: "",
+  header: {}
+},
+{
+  source: "Ripple Insights",
+  url: "https://ripple.com/insights/",
+  articleSelector: ".my-2",
+  titleSelector: "p",
+  urlSelector: "a",
+  summarySelector: "p",
+  baseUrl: "https://ripple.com",
+  header: {}
+},
+{
+  source: "Solana Blog",
+  url: "https://solana.com/blog",
+  articleSelector: "a",
+  titleSelector: "h2",
+  urlSelector: "a",
+  summarySelector: "p",
+  baseUrl: "https://solana.com",
+  header: {}
+},
+{
+  source: "Stellar Blog",
+  url: "https://stellar.org/blog",
+  articleSelector: '.sc-f34a51bd-0',
+  titleSelector: "h3",
+  urlSelector: "a",
+  summarySelector: "p",
+  baseUrl: "https://stellar.org",
+  header: {}
+},
   // Add more configurations for other websites
 ];
 
