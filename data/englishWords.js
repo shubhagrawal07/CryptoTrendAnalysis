@@ -8,6 +8,8 @@ const englishWords = [
   "wth",
   "etfs",
   "nft",
+  "aws",
+  "ssd",
   "nfts",
   "multi",
   "cio",

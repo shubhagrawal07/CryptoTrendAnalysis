@@ -61,14 +61,20 @@ const scraper = async (accounts, configs) => {
   });
 
   const articlesWithCryptos = searchForCryptoInArticles.filter((obj) => {
-    console.log(JSON.stringify(obj.possibleCryptos));
     return JSON.stringify(obj.possibleCryptos) !== "{}";
   });
 
+  for(const article of articlesWithCryptos){
+    console.log(article.possibleCryptos);
+  }
+
   const tweetsWithCryptos = searchForCryptoInTweets.filter((obj) => {
-    console.log(JSON.stringify(obj.possibleCryptos));
     return JSON.stringify(obj.possibleCryptos) !== "{}";
   });
+
+  for(const tweet of tweetsWithCryptos){
+    console.log(tweet.possibleCryptos);
+  }
 
     console.log("Saving data to the database....");
   await savingTweets(tweetsWithCryptos);
