@@ -198,6 +198,56 @@ const configs = [
   baseUrl: "https://stellar.org",
   header: {}
 },
+{
+  source: "Gemini Blog",
+  url: "https://gemini.com/blog",
+  articleSelector: ".sc-c343aa45-0",
+  titleSelector: "h4",
+  urlSelector: "a",
+  summarySelector: "p",
+  baseUrl: "https://gemini.com",
+  header: {}
+},
+{
+  source: "Golem Network Blog",
+  url: "https://blog.golem.network",
+  articleSelector: "article",
+  titleSelector: "h2",
+  urlSelector: "a",
+  summarySelector: ".post-card-excerpt",
+  baseUrl: "https://blog.golem.network",
+  header: {}
+},
+{
+  source: "Hyperledger Blog",
+  url: "https://hyperledger.org/blog",
+  articleSelector: "article",
+  titleSelector: "h3",
+  urlSelector: "a",
+  summarySelector: ".blog-post__description",
+  baseUrl: "",
+  header: {}
+},
+{
+  source: "Kraken Blog",
+  url: "https://blog.kraken.com",
+  articleSelector: "article",
+  titleSelector: "h2",
+  urlSelector: "a",
+  summarySelector: "p",
+  baseUrl: "",
+  header: {}
+},
+{
+  source: "Ledger Insights",
+  url: "https://ledgerinsights.com",
+  articleSelector: "article",
+  titleSelector: "h2",
+  urlSelector: "a",
+  summarySelector: "h2",
+  baseUrl: "",
+  header: {}
+},
   // Add more configurations for other websites
 ];
 
