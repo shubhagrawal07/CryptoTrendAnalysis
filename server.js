@@ -17,9 +17,12 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
+let tweetCycle = 0;
+
 app.get("/api/scrape", async (req, res) => {
   console.log("Running the scheduled scapping script.....");
-  const data = await scraper(accounts, configs);
+  const data = await scraper(accounts, configs,tweetCycle);
+  tweetCycle++;
   res.json(data);
 });
 

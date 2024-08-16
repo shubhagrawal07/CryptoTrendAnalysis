@@ -31,9 +31,9 @@ const twitterScraper = async (accounts) => {
   }
 };
 
-const scraper = async (accounts, configs) => {
+const scraper = async (accounts, configs,tweetCycle) => {
   console.log("Fetching all tweets.....");
-  const allTweets = await twitterScraper(accounts);
+  const allTweets = await twitterScraper(accounts[tweetCycle%22]);
   console.log(`${allTweets.length} tweets fetched`)
 
   console.log("Fetching all articles....");
