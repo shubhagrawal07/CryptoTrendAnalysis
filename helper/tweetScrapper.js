@@ -54,4 +54,19 @@ async function fetchTweetsWithScreenName(screenName) {
   }
 }
 
-module.exports = fetchTweetsWithScreenName;
+
+const twitterScraper = async (accounts) => {
+  try {
+    const allTweetsPromises = accounts.map((screenName) =>
+      fetchTweetsWithScreenName(screenName)
+    );
+    const allTweets = await Promise.all(allTweetsPromises);
+    return allTweets.flat();
+  } catch (error) {
+    console.error("Error fetching tweet data:", error);
+    return [];
+  }
+};
+
+
+module.exports = twitterScraper;

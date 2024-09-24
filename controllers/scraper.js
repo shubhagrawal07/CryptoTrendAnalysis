@@ -1,35 +1,11 @@
-const scrapeWebsite = require("../helper/webScrapper");
-const fetchTweetsWithScreenName = require("../helper/tweetScrapper");
+const websiteScraper = require("../helper/webScrapper");
+const twitterScraper = require("../helper/tweetScrapper");
 const cryptoFinder = require("../helper/cryptoFinder");
 const {savingTweets,savingArticles} = require("../helper/savingDataInDB");
 
 // Main function to scrape all websites
-const websiteScraper = async (configs) => {
-  try {
-    const allNewsPromises = configs.map((config) => scrapeWebsite(config));
-    const allNews = await Promise.all(allNewsPromises);
-    const flatNews = allNews.flat(); // Flatten the array of arrays
-    // console.log(flatNews);
-    return flatNews;
-  } catch (error) {
-    console.error("Error fetching articles data:", error);
-    return [];
-  }
-};
 
 // Main function to scrape all the twitter accounts
-const twitterScraper = async (accounts) => {
-  try {
-    const allTweetsPromises = accounts.map((screenName) =>
-      fetchTweetsWithScreenName(screenName)
-    );
-    const allTweets = await Promise.all(allTweetsPromises);
-    return allTweets.flat();
-  } catch (error) {
-    console.error("Error fetching tweet data:", error);
-    return [];
-  }
-};
 
 const scraper = async (accounts, configs,tweetCycle) => {
   console.log("Fetching all tweets.....");
@@ -83,4 +59,20 @@ const scraper = async (accounts, configs,tweetCycle) => {
   return { tweetsWithCryptos, articlesWithCryptos };
 };
 
-module.exports = { websiteScraper, twitterScraper, scraper };
+
+
+
+const scraper_02 = async(accounts, configs,tweetCycle)=>{
+  console.log("Fetching all tweets.....");
+  const allTweets = await twitterScraper(accounts[tweetCycle%22]);
+  console.log(`${allTweets.length} tweets fetched`)
+
+  console.log("Fetching all articles....");
+  const allArticles = await websiteScraper(configs);
+  console.log(`${allArticles.length} articles fetched`);
+
+  return {allArticles,allTweets};
+
+}
+
+module.exports = { websiteScraper, twitterScraper, scraper, scraper_02 };

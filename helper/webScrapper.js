@@ -56,4 +56,19 @@ async function scrapeWebsite(config) {
   }
 }
 
-module.exports = scrapeWebsite;
+
+const websiteScraper = async (configs) => {
+  try {
+    const allNewsPromises = configs.map((config) => scrapeWebsite(config));
+    const allNews = await Promise.all(allNewsPromises);
+    const flatNews = allNews.flat(); // Flatten the array of arrays
+    // console.log(flatNews);
+    return flatNews;
+  } catch (error) {
+    console.error("Error fetching articles data:", error);
+    return [];
+  }
+};
+
+
+module.exports = websiteScraper;
