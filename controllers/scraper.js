@@ -1,6 +1,7 @@
 const websiteScraper = require("../helper/webScrapper");
 const twitterScraper = require("../helper/tweetScrapper");
 const cryptoFinder = require("../helper/cryptoFinder");
+const {findPossibleCryptos} = require("../helper/cryptoFinder_02");
 const {savingTweets,savingArticles} = require("../helper/savingDataInDB");
 
 // Main function to scrape all websites
@@ -71,7 +72,28 @@ const scraper_02 = async(accounts, configs,tweetCycle)=>{
   const allArticles = await websiteScraper(configs);
   console.log(`${allArticles.length} articles fetched`);
 
-  return {allArticles,allTweets};
+  // return {allArticles,allTweets};
+
+  const searchForCryptoInTweets = allTweets.map((tweet) => {
+    const text = tweet.postText;
+    const possibleCryptos = findPossibleCryptos(text);
+    tweet.possibleCryptos = possibleCryptos;
+    return tweet;
+  });
+
+  const searchForCryptoInArticles = allArticles.map((article) => {
+    const texts = article.details;
+    const possibleCryptos = [];
+
+    for (let i = 0; i < texts.length; i++) {
+      const currCrypto = findPossibleCryptos(texts[i]);
+      possibleCryptos.push(currCrypto);
+    }
+    article.possibleCryptos = [...new Set(possibleCryptos.flat())];
+    return article;
+  });
+
+  
 
 }
 
