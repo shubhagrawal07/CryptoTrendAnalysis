@@ -93,7 +93,30 @@ const scraper_02 = async(accounts, configs,tweetCycle)=>{
     return article;
   });
 
+  const frequencyOfCryptos = new Map();
+
+  searchForCryptoInArticles.forEach(article=>{
+    article.possibleCryptos.forEach(crypto=>{
+      if(frequencyOfCryptos.has(crypto)){
+        frequencyOfCryptos.set(crypto,frequencyOfCryptos.get(crypto)+1);
+      }else{
+        frequencyOfCryptos.set(crypto,1);
+      }
+    })
+  })
+
+  searchForCryptoInTweets.forEach(tweet=>{
+    tweet.possibleCryptos.forEach(crypto=>{
+      if(frequencyOfCryptos.has(crypto)){
+        frequencyOfCryptos.set(crypto,frequencyOfCryptos.get(crypto)+1);
+      }else{
+        frequencyOfCryptos.set(crypto,1);
+      }
+    })
+  })
+
   
+
 
 }
 
